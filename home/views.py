@@ -12,6 +12,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
         context['today'] = datetime.now()
         return context
 
+
 class AuthorizedView(TemplateView):
     template_name = 'home/authorized.html'
     login_url = '/admin'
