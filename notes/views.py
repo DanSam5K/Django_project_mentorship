@@ -11,6 +11,7 @@ class NotesDeleteView(DeleteView):
     success_url = '/smart/notes'
     template_name = 'notes/notes_delete.html'
 
+
 class NotesUpdateView(UpdateView):
     model = Notes
     success_url = '/smart/notes'
@@ -21,7 +22,6 @@ class NotesCreateView(CreateView):
     model = Notes
     success_url = '/smart/notes'
     form_class = NotesForm
-
 
     def form_valid(self, form):
         form.instance.author = self.request.user
