@@ -1,8 +1,20 @@
-from django.views.generic import DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView
 
 
+from .forms import NotesForm
 from .models import Notes
 # Create your views here.
+
+
+class NotesCreateView(CreateView):
+    model = Notes
+    success_url = '/smart/notes'
+    form_class = NotesForm
+
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class NotesListView(ListView):
