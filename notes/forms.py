@@ -1,32 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Notes, User
-
-
-class SignUpForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = ('username', 'password', 'email')
-        widgets = {
-            'username': forms.TextInput(attrs={"class": "form-control mb-5 my-2"}),
-            'password': forms.PasswordInput(attrs={"class": "form-control mb-5 my-2"}),
-        }
-        labels = {
-            'username': 'Username',
-            'password': 'Password',
-        }
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        if len(username) < 5:
-            raise ValidationError('Username is too short')
-        return username
-
-    def clean_password(self):
-        password = self.cleaned_data['password']
-        if len(password) < 5:
-            raise ValidationError('Password is too short')
-        return password
+from .models import Notes
 
 
 class NotesForm(forms.ModelForm):

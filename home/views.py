@@ -2,11 +2,14 @@ from datetime import datetime
 from django.views.generic import TemplateView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.forms import UserCreationForm
+from .forms import SignUpForm
+
 
 from django.shortcuts import redirect
+
+
 class SignUpView(CreateView):
-    form_class = UserCreationForm
+    form_class = SignUpForm
     template_name = 'home/register.html'
     success_url = '/smart/notes'
 
@@ -15,8 +18,10 @@ class SignUpView(CreateView):
             return redirect('notes.list')
         return super().get(request, *args, **kwargs)
 
+
 class LogoutInterfaceView(LogoutView):
     template_name = 'home/logout.html'
+
 
 class LoginInterfaceView(LoginView):
     template_name = 'home/login.html'
