@@ -1,4 +1,10 @@
 ul.errorlist {
     display: none;
 }
+
+.signup-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
 ```
